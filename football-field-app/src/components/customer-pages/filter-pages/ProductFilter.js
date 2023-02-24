@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
-import ProductDetail from '../detail-pages/\bProductDetail';
+import ProductDetail from '../detail-pages/ProductDetail';
 
 //Chưa xử lý xong navegate nút detail 
 
