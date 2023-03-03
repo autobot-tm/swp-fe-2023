@@ -1,0 +1,52 @@
+.card {
+  background-color: white;
+  width: 100%;
+  overflow: hidden;
+  margin: 2rem;
+  box-shadow: 5px 5px 5px 5px #000;
+  -webkit-border-radius: 0.5rem;
+  moz-border-radius: 0.5rem;
+  border-radius: 0.5rem;
+}
+.card img {
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+}
+.card .card_content {
+  padding: 2rem;
+}
+.card .card_title {
+  margin: 0;
+  color: black;
+}
+.card .card_description {
+  margin: 0;
+  color: #999;
+}
+.card_dark {
+  background-color: black;
+}
+.card_dark .card_title {
+  color: white;
+}
+
+#root {
+  width: 100%;
+}
+
+.container {
+  width: 70%;
+  margin: auto;
+  justify-content: center;
+}
+
+body {
+  font-family: "Poppins", Helvetica, sans-serif;
+  background-color: #ab99ca;
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}/*# sourceMappingURL=App.css.map */
