@@ -5,7 +5,9 @@ import Navbar from 'react-bootstrap/Navbar';
 import ModalSearching from '../customer-pages/ModalSearching';
 import { NavLink } from 'react-router-dom'
 
-function Header() {
+function Header(props) {
+    const { username, onLogout, isSubmitted } = props;
+    console.log(username)
     return (
         <>
             <Navbar className='mb-1' bg="light" expand="lg" sticky='top'>
@@ -30,7 +32,14 @@ function Header() {
                             <Nav.Link><NavLink className="nav-link" to="/about">About</NavLink></Nav.Link>
                             <Nav.Link><NavLink className="nav-link" to="/contact">Contact</NavLink></Nav.Link>
                             <Nav.Link><NavLink className="nav-link" to="/action">Đặt sân</NavLink></Nav.Link>
-                            <Nav.Link><NavLink className="nav-link" to="/login">Đăng nhập</NavLink></Nav.Link>
+                            {isSubmitted ? (username && (
+                                <Navbar.Text className="justify-content-end">
+                                    Welcome, {username} <a href="/" onClick={onLogout}>Logout</a>
+                                </Navbar.Text>))
+                                : (<Nav.Link><NavLink className="nav-link" to="/login">Đăng nhập</NavLink></Nav.Link>)
+                            }
+                            
+                            {/* <Nav.Link><NavLink className="nav-link" to="/login">Đăng nhập</NavLink></Nav.Link> */}
                         </Nav>
                         <ModalSearching />
                     </Navbar.Collapse>

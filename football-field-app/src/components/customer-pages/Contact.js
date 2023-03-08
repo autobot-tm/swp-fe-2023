@@ -5,7 +5,7 @@ import address from '../../assets/images/address.png'
 function Contact() {
   return (
     <>
-      <Container fluid>
+      <Container className='hei-con' fluid>
         <Row>
           <Col md={{ span: 4, offset: 2 }}>
             <Breadcrumb className='mt-5'>

@@ -1,23 +1,32 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Form, FormGroup, Label } from 'react-bootstrap'
 import { Container, Row, Col } from 'react-bootstrap'
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
-import ProductDetail from '../detail-pages/ProductDetail';
+import Badge from 'react-bootstrap/Badge';
 
-//Chưa xử lý xong navegate nút detail 
+export const products = [
+    { id: 1, start: '1 sao', address: 'Quận 1', price: "100.000" },
+    { id: 2, start: '2 sao', address: 'Quận 2', price: "200.000" },
+    { id: 3, start: '3 sao', address: 'Quận 3', price: "300.000" },
+    { id: 4, start: '4 sao', address: 'Quận 4', price: "400.000" },
+    { id: 5, start: '5 sao', address: 'Quận 5', price: "500.000" },
+    { id: 6, start: '6 sao', address: 'Quận 6', price: "600.000" },
+];
 
 function ProductFilter(props) {
+    const navigate = useNavigate();
+
     //xử lý filter 
+    const [filters, setFilters] = useState({
+        price: '',
+        start: '',
+        address: '',
+    });
 
-    // const [filters, setFilters] = useState({
-    //     price: '',
-    //     brand: '',
-    //     popularity: '',
-    // });
-
-    // // function to handle filter change
+    // function to handle filter change
     // const handleFilterChange = (event) => {
     //     const { name, value } = event.target;
     //     setFilters((prevState) => ({ ...prevState, [name]: value }));
@@ -38,14 +47,32 @@ function ProductFilter(props) {
     const { product } = props;
     const [showDetail, setShowDetail] = useState(false);
 
-    const handleShowDetail = () => {
-        setShowDetail(true);
+    // const navigate = useNavigate();
+    // const handleShowDetail = () => {
+    //     console.log("ok")
+    //     setShowDetail(false);
+    //     navigate(`/detail/${product.id}`)
+    // };
+
+    const handleFilterChange = (event) => {
+        const { name, value } = event.target;
+        setFilters((prevState) => ({ ...prevState, [name]: value }));
+        console.log(name)
     };
 
+    // filter products based on current filters
+    const filteredProducts = products.filter((product) => {
+        return (
+            (filters.price === '' || product.price <= filters.price) &&
+            (filters.start === '' || product.start === filters.start) &&
+            (filters.address === '' ||
+                product.address >= parseInt(filters.address))
+        );
+    });
 
     return (
         <>
-            <Container>
+            <Container className='hei-con'>
                 <Row>
                     <Col md={{ span: 4, offset: 2 }}>
                         <Breadcrumb className='mt-5'>
@@ -65,36 +92,36 @@ function ProductFilter(props) {
                                     type="checkbox"
                                     name="group1"
                                     label="1"
-                                // value={filters.price}
-                                // onChange={handleFilterChange}
+                                    value={filters.price}
+                                    onChange={handleFilterChange}
                                 />
                                 <Form.Check className='mb-2'
                                     type="checkbox"
                                     name="group2"
                                     label="2"
-                                // value={filters.price}
-                                // onChange={handleFilterChange}
+                                    value={filters.price}
+                                    onChange={handleFilterChange}
                                 />
                                 <Form.Check className='mb-2'
                                     type="checkbox"
                                     name="group3"
                                     label="3"
-                                // value={filters.price}
-                                // onChange={handleFilterChange}
+                                    value={filters.price}
+                                    onChange={handleFilterChange}
                                 />
                                 <Form.Check className='mb-2'
                                     type="checkbox"
                                     name="group4"
                                     label="4"
-                                // value={filters.price}
-                                // onChange={handleFilterChange}
+                                    value={filters.price}
+                                    onChange={handleFilterChange}
                                 />
                                 <Form.Check className='mb-2'
                                     type="checkbox"
                                     name="group5"
                                     label="5"
-                                // value={filters.price}
-                                // onChange={handleFilterChange}
+                                    value={filters.price}
+                                    onChange={handleFilterChange}
                                 />
                             </Form.Group>
 
@@ -104,22 +131,22 @@ function ProductFilter(props) {
                                     type="checkbox"
                                     name="field5"
                                     label="Sân 5 người"
-                                // value={filters.price}
-                                // onChange={handleFilterChange}
+                                    value={filters.price}
+                                    onChange={handleFilterChange}
                                 />
                                 <Form.Check className='mb-2'
                                     type="checkbox"
                                     name="field7"
                                     label="Sân 7 người"
-                                // value={filters.price}
-                                // onChange={handleFilterChange}
+                                    value={filters.price}
+                                    onChange={handleFilterChange}
                                 />
                                 <Form.Check className='mb-2'
                                     type="checkbox"
                                     name="field11"
                                     label="Sân 11 người"
-                                // value={filters.price}
-                                // onChange={handleFilterChange}
+                                    value={filters.price}
+                                    onChange={handleFilterChange}
                                 />
                             </Form.Group>
 
@@ -129,36 +156,36 @@ function ProductFilter(props) {
                                     type="checkbox"
                                     name="quan1"
                                     label="Quận 1"
-                                // value={filters.price}
-                                // onChange={handleFilterChange}
+                                    value={filters.price}
+                                    onChange={handleFilterChange}
                                 />
                                 <Form.Check className='mb-2'
                                     type="checkbox"
                                     name="quan2"
                                     label="Quận 2"
-                                // value={filters.price}
-                                // onChange={handleFilterChange}
+                                    value={filters.price}
+                                    onChange={handleFilterChange}
                                 />
                                 <Form.Check className='mb-2'
                                     type="checkbox"
                                     name="quan3"
                                     label="Quận 3"
-                                // value={filters.price}
-                                // onChange={handleFilterChange}
+                                    value={filters.price}
+                                    onChange={handleFilterChange}
                                 />
                                 <Form.Check className='mb-2'
                                     type="checkbox"
                                     name="quan4"
                                     label="Quận 4"
-                                // value={filters.price}
-                                // onChange={handleFilterChange}
+                                    value={filters.price}
+                                    onChange={handleFilterChange}
                                 />
                                 <Form.Check className='mb-2'
                                     type="checkbox"
                                     name="quan5"
                                     label="Quận 5"
-                                // value={filters.price}
-                                // onChange={handleFilterChange}
+                                    value={filters.price}
+                                    onChange={handleFilterChange}
                                 />
                             </Form.Group>
 
@@ -166,29 +193,33 @@ function ProductFilter(props) {
                     </Col>
 
                     <Col xs={9}> <h3 className='mt-4'>SÂN BÓNG ĐÁ</h3>
-                        {/* <ul>
-                            {filteredProducts.map((product) => (
-                                 <li key={product.id}> 
-                                    <Card style={{ width: '18rem' }}>
-                                        <Card.Img variant="left" src="https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt2d829a63f9a62ee1/63de1999bfea9014cbfc480d/Cristiano_Ronaldo_Al-Nassr.jpg?width=1920&height=1080" />
+                        <ul>
+                            {products.map((product) => (
+                                <li key={product.id}>
+                                    <Card className='mb-5' style={{ width: '30rem' }}>
+                                        <Card.Img variant="top" src="https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt2d829a63f9a62ee1/63de1999bfea9014cbfc480d/Cristiano_Ronaldo_Al-Nassr.jpg?width=1920&height=1080" />
                                         <Card.Body>
-                                            <Card.Title>{product.name}</Card.Title>
+                                            <Card.Title>Sân bóng {product.name}</Card.Title>
                                             <Card.Text>
                                                 {product.start}
                                             </Card.Text>
                                             <Card.Text>
-                                                {product.address}
+                                                <b>Địa chỉ:&ensp;</b>{product.address}
                                             </Card.Text>
                                             <Card.Text>
+                                                <b>Giá tham khảo:&ensp;</b>      
+                                                <Badge pill bg="danger">
                                                 {product.price}
+                                                </Badge>{' '}
+                                                
                                             </Card.Text>
-                                            <Button variant="primary">Chi tiết</Button> <Button variant="primary">Đặt sân</Button>
+                                            <Button onClick={() => navigate(`/detail/${product.id}`)} variant="primary">Chi tiết</Button>
                                         </Card.Body>
                                     </Card>
                                 </li>
                             ))}
-                        </ul> */}
-                        <Row>
+                        </ul>
+                        {/* <Row>
                             <Col xs={4}>
                                 <Card style={{ width: '20rem' }}>
                                     <Card.Img variant="left" src="https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt2d829a63f9a62ee1/63de1999bfea9014cbfc480d/Cristiano_Ronaldo_Al-Nassr.jpg?width=1920&height=1080" />
@@ -203,52 +234,14 @@ function ProductFilter(props) {
                                         <Card.Text>
                                             PRICE
                                         </Card.Text>
-                                        <Button variant="primary">Chi tiết</Button> <Button variant="primary">Đặt sân</Button>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-
-                            <Col xs={4}>
-                                <Card style={{ width: '20rem' }}>
-                                    <Card.Img variant="left" src="https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt2d829a63f9a62ee1/63de1999bfea9014cbfc480d/Cristiano_Ronaldo_Al-Nassr.jpg?width=1920&height=1080" />
-                                    <Card.Body>
-                                        <Card.Title></Card.Title>
-                                        <Card.Text>
-                                            NAME
-                                        </Card.Text>
-                                        <Card.Text>
-                                            ADDRESS
-                                        </Card.Text>
-                                        <Card.Text>
-                                            PRICE
-                                        </Card.Text>
-                                        <Button variant="primary">Chi tiết</Button> <Button variant="primary">Đặt sân</Button>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-
-                            <Col xs={4}>
-                                <Card style={{ width: '20rem' }}>
-                                    <Card.Img variant="left" src="https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt2d829a63f9a62ee1/63de1999bfea9014cbfc480d/Cristiano_Ronaldo_Al-Nassr.jpg?width=1920&height=1080" />
-                                    <Card.Body>
-                                        <Card.Title></Card.Title>
-                                        <Card.Text>
-                                            NAME
-                                        </Card.Text>
-                                        <Card.Text>
-                                            ADDRESS
-                                        </Card.Text>
-                                        <Card.Text>
-                                            PRICE
-                                        </Card.Text> 
-                                                        {/* LOADING NAVEGATE */}
+                                      
                                         <Button onClick={handleShowDetail} variant="primary">Chi tiết</Button> {showDetail && <ProductDetail product={product} />}
-                                         <Button variant="primary">Đặt sân</Button>
+                                        <Button variant="primary">Đặt sân</Button>
                                     </Card.Body>
                                 </Card>
                             </Col>
 
-                        </Row>
+                        </Row> */}
 
                     </Col>
                 </Row>

@@ -1,0 +1,198 @@
+#home {
+  background: url("./assets/images/wallpaperflare.com_wallpaper.jpg") no-repeat;
+  width: 100%;
+  background-size: cover;
+  height: 700px;
+  text-align: center;
+}
+
+h1 .logo {
+  line-height: 700px;
+  font-size: 230%;
+  font-family: 'Brush Script MT', cursive;
+  color: orange;
+  width: 200px;
+  margin-left: -20px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.footer {
+  border-top: 3px solid #333;
+  font-weight: bold;
+  max-height: 50vh;
+  height: 20px;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+}
+
+
+/* HOME */
+.context-home {
+  background-color: rgb(238, 236, 232);
+  height: 400px;
+  text-align: justify;
+  width: 100%;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  line-height: 1.3;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: orange;
+}
+
+.fa-solid,
+.fa-brands,
+.fa-sharp-solid {
+  background-color: rgb(238, 236, 232);
+  border-radius: 0.2em;
+  margin-bottom: 1rem;
+  padding: 0.3em;
+  color: orange;
+}
+
+.text-muted {
+  color: #868e96 !important;
+}
+
+.hei-con {
+  height: 1280px auto;
+  margin-bottom: 200px ;
+}
+
+
+/* FORM LOGIN */
+#bg-login {
+  background: url("./assets/images/1014251.jpeg") no-repeat;
+  text-align: left !important;
+  width: 100%;
+  background-size: cover;
+  height: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  height: 100vh;
+}
+
+.login-form {
+  max-width: 450px;
+  min-width: 300px;
+  max-height: 500px;
+  width: 30%;
+  height: 60%;
+  margin: 100px auto;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+}
+
+.error {
+  margin-top: 3px;
+  color: red;
+}
+
+#header-title {
+  text-align: center;
+  font-family: 'open sans', sans-serif;
+  padding: 2rem 0;
+  margin: 0;
+  font-size: 2rem;
+}
+
+.btn-login {
+ margin: 10px 7px 0 0;
+}
+
+.btn-social {
+  margin-top: 10px !important;
+}
+
+.social-login {
+  border-top: #333 solid 0.5px;
+  margin-top: 10px;
+}
+
+/* filter */
+.hei-con ul li {
+  list-style: none;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
+
+#main-wrapper {
+  width: 90%;
+  margin: auto;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#main-wrapper .card img {
+  display: block;
+  text-align: center;
+  width: 40vw;
+  height: auto;  
+  margin: 20px;
+  border-radius: 10px;  
+}
+
+
+.wrap-image {
+  background-color: rgb(215, 178, 104);
+  width: 69.5vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 10px 0 0;
+  padding-bottom: 20px;
+}
+
+
+/* text section on the right hand side of each card */
+
+.description {
+  width: 100%;
+  padding-left: 20px; 
+  padding-top: 20px; 
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.description p {
+  padding: 20px;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+}
+
+.description>div {
+  width: 100%;
+  height: 5px;
+  background-color: #acabab;
+  margin-top: 3px;
+  border-radius: 2px;
+}
+
+.section-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-detail-title {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: center;
+  margin-top: 20px !important;
+}
+
