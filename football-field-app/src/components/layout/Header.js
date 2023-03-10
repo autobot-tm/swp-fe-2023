@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import ModalSearching from '../customer-pages/ModalSearching';
 import { NavLink } from 'react-router-dom'
+import Image from 'react-bootstrap/Image';
+import { UserContext } from '../customer-pages/login-pages/LoginGmail';
 
-function Header(props) {
-    const { username, onLogout, isSubmitted } = props;
-    console.log(username)
+
+function Header() {
+    // const user = useContext(UserContext);
+    // console.log(user);
     return (
         <>
             <Navbar className='mb-1' bg="light" expand="lg" sticky='top'>
@@ -32,14 +35,18 @@ function Header(props) {
                             <Nav.Link><NavLink className="nav-link" to="/about">About</NavLink></Nav.Link>
                             <Nav.Link><NavLink className="nav-link" to="/contact">Contact</NavLink></Nav.Link>
                             <Nav.Link><NavLink className="nav-link" to="/action">Đặt sân</NavLink></Nav.Link>
-                            {isSubmitted ? (username && (
+                            {/* {user ? (
                                 <Navbar.Text className="justify-content-end">
-                                    Welcome, {username} <a href="/" onClick={onLogout}>Logout</a>
-                                </Navbar.Text>))
-                                : (<Nav.Link><NavLink className="nav-link" to="/login">Đăng nhập</NavLink></Nav.Link>)
-                            }
-                            
+                                    Welcome, {user.name} 
+                                    <a onClick="" href="/">Logout</a>
+                                </Navbar.Text>)
+                                : 
+                                (<Nav.Link><NavLink className="nav-link" to="/login">Đăng nhập</NavLink></Nav.Link>)
+                            } */}
+
                             {/* <Nav.Link><NavLink className="nav-link" to="/login">Đăng nhập</NavLink></Nav.Link> */}
+
+                            {/* <Image src="" style={{ marginRight: "15px", borderRadius: "50%", height: "50px", width: "50px" }} /> */}
                         </Nav>
                         <ModalSearching />
                     </Navbar.Collapse>

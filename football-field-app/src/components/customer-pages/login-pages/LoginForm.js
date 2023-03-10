@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
-import { Navbar, Nav } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Header from "../../layout/Header";
 import LoginGmail from "./LoginGmail";
+// import LogOutGmail from './components/customer-pages/login-pages/LogOutGmail';
+import { gapi } from 'gapi-script';
+
+
+const clientId = '823352207721-5tf63moc8327k22nf7vim28el6cbg5ca.apps.googleusercontent.com'
 
 
 const LoginForm = () => {
@@ -58,6 +62,18 @@ const LoginForm = () => {
     }
   };
 
+  //hanlde GMAIL 
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId: clientId,
+        scope: ""
+      })
+    };
+    gapi.load('client:auth2', start);
+  });
+
+
   function handleLogout() {
     setIsSubmitted(false);
     setUname('');
@@ -68,9 +84,9 @@ const LoginForm = () => {
     navigate('/');
   };
 
-  const handleTransformRegiter = () => {
-    navigate('/register');
-  };
+  // const handleTransformRegiter = () => {
+  //   navigate('/register');
+  // };
 
   const renderForm = (
     <Container fluid id="bg-login">
@@ -104,25 +120,26 @@ const LoginForm = () => {
               />
               <b className="error">{renderErrorMessage("pass")} </b>
             </Form.Group>
+
             <Button className="btn-login" variant="primary" type="submit">
               Login
             </Button>
-            <Button onClick={handleTransformRegiter} className="btn-login" variant="secondary" type="button">
+            {/* <Button onClick={handleTransformRegiter} className="btn-login" variant="secondary" type="button">
               Sign up
-            </Button>
+            </Button> */}
           </Form>
-          <div className="social-login">
-            <LoginGmail className="btn-social" />
-          </div>
+            <div className="social-login">
+              <LoginGmail />
+            </div>
+
         </Col>
       </Row>
     </Container>
   )
+
   return (
     <>
-      {isSubmitted ? handleTransform() &&
-        (<Header username={isSubmitted ? uname : null} onLogout={handleLogout} isSubmitted={isSubmitted} />)
-        : renderForm}
+      {isSubmitted ? handleTransform() : renderForm}
     </>
   )
 

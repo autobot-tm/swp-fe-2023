@@ -6,7 +6,6 @@ import Contact from "../customer-pages/Contact";
 import ProductFilter from "../customer-pages/filter-pages/ProductFilter";
 import LoginForm from "../customer-pages/login-pages/LoginForm";
 import ProductDetail from "../customer-pages/detail-pages/ProductDetail";
-import FormRegister from "../customer-pages/login-pages/FormRegister";
 
 const Layout = () => {
   return (
@@ -19,7 +18,6 @@ const Layout = () => {
           <Route path="/action" element={<ProductFilter />} />
           <Route path="/detail/:id" element={<ProductDetail />} />
           <Route path="/login" element={<LoginForm />} />
-          <Route path="/register" element={<FormRegister />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
       

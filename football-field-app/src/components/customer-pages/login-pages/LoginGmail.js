@@ -1,46 +1,68 @@
-import React from "react";
-import { GoogleOAuthProvider } from '@react-oauth/google';
-import { useGoogleOneTapLogin } from '@react-oauth/google';
-import { GoogleLoginButton } from "@react-oauth/google";
+import React, { useState, createContext } from "react";
 import GoogleLogin from "react-google-login";
+import LogOutGmail from "./LogOutGmail";
+import { useNavigate } from 'react-router-dom';
 
 const clientId = '823352207721-5tf63moc8327k22nf7vim28el6cbg5ca.apps.googleusercontent.com'
+// export const UserContext = createContext();
 
-
-// const LoginGmail = () => {
-// const onSuccess = (res) => {
-//   console.log(res);
-// };
-
-// const onFailure = (res) => {
-//   console.log(res);
-// };
-
+// function UserProvider ({props}) {
+//   const user = this.props.user;
+//   console.log(user);
+// }
 
 function LoginGmail() {
+  const [isSignIn, setIsSignIn] = useState(false);
+  const [userInfo, setUserInfo] = useState({ tokenId: '', name: '', email: '', photo: '' });
 
-  const handleLogin = (response) => {
-    console.log(response);
-    localStorage.setItem("accessToken", response.accessToken);
-    localStorage.setItem("email", response.profileObj.email);
-    // Redirect to dashboard page
-    window.location.href = "/home";
+  const user = { name: userInfo.name, email: userInfo.email, photo: userInfo.photo };
+
+  const StatusGoogle = (props) => {
+    let code;
+    if (isSignIn === false) code = <BtnGoogle />
+    else {
+      code = (
+        <LogOutGmail />
+      )
+    }
+    return (code);
   };
 
-  const handleLoginFailure = (error) => {
-    console.error(error);
+  const onSuccess = (res) => {
+    console.log('Login Success: currentUser:', res.profileObj);
+    // console.log(res);
+    setIsSignIn(true);
+    setUserInfo({
+      tokenId: res.tokenId,
+      name: res.profileObj.name,
+      email: res.profileObj.email,
+      photo: res.profileObj.imageUrl
+    })
   };
 
+  const onFailure = (res) => {
+    // console.log(res);
+    setIsSignIn(false);
+    setUserInfo({ tokenId: '', name: '', email: '' })
+  };
+
+  const BtnGoogle = () => {
+    return (
+      <GoogleLogin
+        clientId={clientId}
+        buttonText="Login with Google"
+        onSuccess={onSuccess}
+        onFailure={onFailure}
+        cookiePolicy={"single_host_origin"}
+        isSignedIn={true}
+      />
+    );
+  };
 
   return (
-    <GoogleLogin
-      clientId={clientId}
-      buttonText="Login with Google"
-      onSuccess={handleLogin}
-      onFailure={handleLoginFailure}
-      cookiePolicy={"single_host_origin"}
-      isSignedIn={true}
-    />
+    <>
+      <StatusGoogle />
+    </>
   );
 };
 
